@@ -5,7 +5,10 @@ import os
 
 # Init app
 app = Flask(__name__)
+basedir = os.path.abspath(os.path.dirname(__file__)) # base directory
 
+# Database
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'db.sqlite')
 
 
 # Run Server
