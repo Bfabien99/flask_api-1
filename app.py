@@ -17,6 +17,21 @@ db = SQLAlchemy(app)
 # Init ma (marshmallow)
 ma = Marshmallow(app)
 
+# Product Class/Model
+class Product(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), unique=True, nullable=False)
+    description = db.Column(db.String(200), nullable=False)
+    price = db.Column(db.Float, nullable=False)
+    qty = db.Column(db.Integer, nullable=False)
+    
+    def __init__(self, name, description, price, qty):
+        self.name = name
+        self.description = description
+        self.price = price
+        self.qty = qty
+        
+
 # Run Server
 if __name__ == '__main__':
     app.run(debug=True)
