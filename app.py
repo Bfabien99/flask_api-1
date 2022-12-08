@@ -30,7 +30,15 @@ class Product(db.Model):
         self.description = description
         self.price = price
         self.qty = qty
-        
+
+# Product Schema
+class ProductSchema(ma.Schema):
+    class Meta:
+        fields = ('id', 'name', 'description', 'price', 'qty')
+
+# init Schema
+product_schema = ProductSchema(strict=True)
+products_schema = ProductSchema(many=True, strict=True)
 
 # Run Server
 if __name__ == '__main__':
